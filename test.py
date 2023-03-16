@@ -1,17 +1,18 @@
-n, k = map(int, input().split())
-num = 0
+n = int(input())
+x, y = 1, 1
+move = input().split()
 
-while True:
-    if n % k == 0:
-        n = n // k
-        num += 1
-        if n == 1:
-            print(num)
-            break
-        
-    elif n % k != 0:
-        n -= 1
-        num += 1
-        if n == 1:
-            print(num)
-            break
+move_types = ['L', 'R', 'U', 'D']
+dx = [0, 0, -1, 1]
+dy = [-1, 1, 0, 0]
+
+for plan in move:
+    for i in range(len(move_types)):
+        if plan == move_types[i]:
+            nx = x + dx[i]
+            ny = y + dy[i]
+    if nx > n or ny > n or nx < 1 or ny < 1:
+        continue
+    x, y = nx, ny
+
+print(x, y) 
