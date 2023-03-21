@@ -12,5 +12,5 @@ for row in range(n):
 
 for row in range(n):
     for col in range(m):
-        print(A[row][col] + B[row][col], end=' ')
+        print(A[row][col] + B[row][col], end = ' ')
     print()

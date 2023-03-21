@@ -1,18 +1,14 @@
-n = int(input())
-x, y = 1, 1
-move = input().split()
+now = input()
+row = int(now[1])
+column = int(ord(now[0])) - int(ord('a')) + 1
 
-move_types = ['L', 'R', 'U', 'D']
-dx = [0, 0, -1, 1]
-dy = [-1, 1, 0, 0]
+steps = [(-2,-1), (-1, -2), (1, -2), (2, -1), (2, 1), (1, 2), (-1, 2), (-2, 1)]
 
-for plan in move:
-    for i in range(len(move_types)):
-        if plan == move_types[i]:
-            nx = x + dx[i]
-            ny = y + dy[i]
-    if nx > n or ny > n or nx < 1 or ny < 1:
-        continue
-    x, y = nx, ny
+result = 0
+for step in steps:
+    next_row = row + step[0]
+    next_column = column + step[1]
+    if next_row >=1 and next_row <= 8 and next_column >= 1 and next_column <= 8:
+        result += 1
 
-print(x, y) 
+print(result)
