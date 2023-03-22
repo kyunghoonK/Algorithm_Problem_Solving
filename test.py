@@ -1,14 +1,14 @@
-now = input()
-row = int(now[1])
-column = int(ord(now[0])) - int(ord('a')) + 1
-
-steps = [(-2,-1), (-1, -2), (1, -2), (2, -1), (2, 1), (1, 2), (-1, 2), (-2, 1)]
-
+n = input()
+length = len(n)
 result = 0
-for step in steps:
-    next_row = row + step[0]
-    next_column = column + step[1]
-    if next_row >=1 and next_row <= 8 and next_column >= 1 and next_column <= 8:
-        result += 1
 
-print(result)
+for i in range(length//2):
+    result += int(n[i])
+
+for i in range(length//2, length):
+    result -= int(n[i])
+
+if result == 0:
+    print("LUCKY")
+else:
+    print("READY")
