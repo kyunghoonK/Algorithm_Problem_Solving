@@ -1,14 +1,15 @@
-n = input()
-length = len(n)
-result = 0
+from collections import deque
 
-for i in range(length//2):
-    result += int(n[i])
+# 큐 구현을 위해 deque 라이브러리를 사용
+queue = deque()
 
-for i in range(length//2, length):
-    result -= int(n[i])
+queue.append(5)
+queue.append(2)
+queue.append(3)
+queue.append(7)
+queue.popleft()
+queue.append(1)
+queue.append(4)
+queue.popleft()
 
-if result == 0:
-    print("LUCKY")
-else:
-    print("READY")
+print(queue)
