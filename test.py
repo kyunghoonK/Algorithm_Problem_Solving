@@ -1,16 +1,19 @@
-from collections import deque
+n = int(input())
+r = int(input())
 
-# BFS 메서드 정의
-def bfs(graph, start, visited):
-    queue = deque([start])
-    # 현재 노드를 방문 처리
-    visited[start] = True
-    
-    # 큐가 빌 때까지 반복
-    while queue:
-        v = queue.popleft()
-        print(v, end=' ')
-        for i in graph[v]:
-            if not visited[i]:
-                queue.append(i)
-                visited[i] = True
+graph = [ [] for i in range(n+1) ]
+
+cnt = 0
+visited = [0] * (n+1)
+
+print("graph : ", graph)
+print("visited : ", visited)
+
+for i in range(r):
+    a,b = list(map(int, input().split()))
+    graph[a].append(b)
+    graph[b].append(a)
+
+def dfs(start):
+    global cnt
+    visited[start] = 1
