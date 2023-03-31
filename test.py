@@ -1,19 +1,28 @@
-n = int(input())
-r = int(input())
+n, m = map(int, input().split())
 
-graph = [ [] for i in range(n+1) ]
+graph = []
 
-cnt = 0
-visited = [0] * (n+1)
+for i in range(n):
+    graph.append(list(map(int, input().split())))
+    
+def dfs(x, y):
+    if x <= -1 or x >= n or y <= -1 or y >= m:
+        return False
+    
+    if graph[x][y] == 0:
+        graph[x][y] = 1
+        
+        dfs(x-1, y)
+        dfs(x+1, y)
+        dfs(x, y-1)
+        dfs(x, y+1)
+        return True
+    return False
 
-print("graph : ", graph)
-print("visited : ", visited)
+result = 0
+for i in range(n):
+    for j in range(m):
+        if dfs(i, j) == True:
+            result += 1
 
-for i in range(r):
-    a,b = list(map(int, input().split()))
-    graph[a].append(b)
-    graph[b].append(a)
-
-def dfs(start):
-    global cnt
-    visited[start] = 1
+print(result)
