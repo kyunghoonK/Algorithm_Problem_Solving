@@ -1,10 +1,12 @@
 n = int(input())
 
-list = []
+array = []
 
 for i in range(n):
-    list.append(int(input()))
+    input_data = input().split()
+    array.append( (input_data[0], input_data[1]) )
 
-list.sort()
-list.reverse()
-print(list)
+array = sorted(array, key=lambda student: student[1])
+
+for student in array:
+    print(student[0], end=' ')

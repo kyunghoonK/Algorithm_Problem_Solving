@@ -1,3 +1,5 @@
+# 왕실의 나이트
+
 # 현재 나이트의 위치 입력 받기
 input_data = input()
 row =int(input_data[1])
