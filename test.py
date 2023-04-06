@@ -1,11 +1,33 @@
 n = int(input())
 
-students = []
+graph = []
 
 for _ in range(n):
-    students.append(input().split())
+    graph.append(list(map(int, input())))
 
-students.sort(key=lambda x: (-int(x[1]), int(x[2]), -int(x[3]), x[0]))
+result = []
+cnt = 0
 
-for i in students:
-    print(students[0])
+def dfs(x, y):
+    global cnt
+    if x < 0 or y < 0 or x >= n or y >= n:
+        return False
+    if graph[x][y] == 1:
+        cnt += 1
+        graph[x][y] = 0
+        dfs(x-1, y)
+        dfs(x+1, y)
+        dfs(x, y-1)
+        dfs(x, y+1)
+        return True
+
+for i in range(n):
+    for j in range(n):
+        if dfs(i, j) == True:
+            result.append(cnt)
+            cnt = 0
+
+print(len(result))
+result.sort()
+for i in result:
+    print(i)
