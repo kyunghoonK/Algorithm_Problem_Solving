@@ -1,33 +1,14 @@
-n = int(input())
+# 순차 탐색 소스코드 구현
+def sequential_search(n, target, array):
+    for i in range(n):
+        if array[i] == target:
+            return i + 1
 
-graph = []
+print("생성할 원소 개수를 입력한 다음 한 칸 띄고 찾을 문자열을 입력하세요.")
+input_data = input().split()
+n = int(input_data[0])
+target = input_data[1]
 
-for _ in range(n):
-    graph.append(list(map(int, input())))
+array = input().split()
 
-result = []
-cnt = 0
-
-def dfs(x, y):
-    global cnt
-    if x < 0 or y < 0 or x >= n or y >= n:
-        return False
-    if graph[x][y] == 1:
-        cnt += 1
-        graph[x][y] = 0
-        dfs(x-1, y)
-        dfs(x+1, y)
-        dfs(x, y-1)
-        dfs(x, y+1)
-        return True
-
-for i in range(n):
-    for j in range(n):
-        if dfs(i, j) == True:
-            result.append(cnt)
-            cnt = 0
-
-print(len(result))
-result.sort()
-for i in result:
-    print(i)
+print(sequential_search(n, target, array))
