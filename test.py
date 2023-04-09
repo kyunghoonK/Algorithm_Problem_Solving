@@ -1,14 +1,26 @@
-# 순차 탐색 소스코드 구현
-def sequential_search(n, target, array):
-    for i in range(n):
-        if array[i] == target:
-            return i + 1
+import sys
 
-print("생성할 원소 개수를 입력한 다음 한 칸 띄고 찾을 문자열을 입력하세요.")
-input_data = input().split()
-n = int(input_data[0])
-target = input_data[1]
+n = int(input())
+d = list(map(int, input().split()))
+d.sort()
 
-array = input().split()
+m = int(input())
+c = list(map(int,input().split()))
 
-print(sequential_search(n, target, array))
+def binary_search(array, target, start, end):
+    mid = (start + end) // 2
+    if start > end:
+        return None
+    if array[mid] == target:
+        return mid
+    elif array[mid] > target :
+        binary_search(array, target, start, mid - 1)
+    else :
+        binary_search(array, target, mid + 1, end)
+
+for i in c:
+    result = binary_search(d, i, 0, n-1)
+    if result != None:
+        print("yes", end=' ')
+    else:
+        print("no")
