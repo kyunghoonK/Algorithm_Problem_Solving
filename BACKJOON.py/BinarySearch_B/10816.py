@@ -30,4 +30,4 @@ for i in a:
         count[i] = 1
 
 for j in b:
-    print
+    print(binary_search(a, j, 0, n-1), end = ' ')
