@@ -1,13 +1,21 @@
+import sys
+input = sys.stdin.readline
+
 n, m = map(int, input().split())
 trees = list(map(int, input().split()))
+start, end = 1, max(trees)
 
-array = []
+while start <= end:
+    mid = (start + end) // 2
+    cnt = 0
+    
+    for i in trees:
+        if i > mid:
+            cnt += i - mid
+    
+    if cnt >= m :
+        start = mid + 1
+    else :
+        end = mid - 1
 
-for i in range(int(max(trees))):
-    for j in trees:
-        if j - i < 0:
-            array.append(0)
-        else:
-            array.append(j-i)
-if sum(array) == m:
-    print(i)
+print(end)

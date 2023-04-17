@@ -1,34 +1,29 @@
-# 플로이드 워셜 함수
+import sys
+input = sys.stdin.readline
 
-INF = int(1e9)
+# 이진 탐색
+def binary_search(array, target, start, end):
+    if start > end:
+        return None
+    mid = (start + end) // 2
+    if array[mid] == target:
+        return mid
+    elif array[mid] > target:
+        return binary_search(array, target, start, mid-1)
+    else:
+        return binary_search(array, target, mid+1, end)
 
-n = int(input())
-m = int(input())
+t = int(input())
 
-graph = [ [INF] * (n + 1) for _ in range(n + 1) ]
-
-# 자신에서 자신으로 가는 값 0으로 설정
-for i in range(1, n+1):
-    for j in range(1, n+1):
-        if i == j:
-            graph[i][j] == 0
-
-# 초기값 입력 받기
-for _ in range(m):
-    a, b, c = map(int, input().split())
-    graph[a][b] = c
-
-# 플로이드 워셜 알고리즘 수행
-for k in range(n + 1):
-    for a in range(n + 1):
-        for b in range(n + 1):
-            graph[a][b] = min(graph[a][b], graph[a][k] + graph[k][b])
-
-# 수행된 결과를 출력
-for a in range(n + 1):
-    for b in range(n + 1):
-        if graph[a][b] == INF:
-            print("INFINITY", end = ' ')
+for _ in range(t):
+    n = int(input())
+    array1 = list(map(int,input().split()))
+    array1.sort()
+    m = int(input())
+    array2 = list(map(int, input().split()))
+    for i in array2:
+        if binary_search(array1, i, 0, n-1) == None:
+            print("0")
         else:
-            print(graph[a][b], end = ' ')
-    print()
+            print("1")
+            
