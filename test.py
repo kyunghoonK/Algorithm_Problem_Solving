@@ -1,13 +1,18 @@
-sugar = int(input())
+data = input()
 
-result = 0
+count0 = 0
+count1 = 0
 
-while sugar >= 0:
-    if sugar % 5 == 0:
-        result += (sugar // 5)
-        print(result)
-        break
-    sugar -= 3
-    result += 1
+if data[0] == 1:
+    count0 += 1
 else:
-    print('-1')
+    count1 += 1
+
+for i in range(len(data)-1):
+    if data[i] != data[i+1]:
+        if data[i+1] == '1':
+            count0 += 1
+        else:
+            count1 += 1
+
+print()
