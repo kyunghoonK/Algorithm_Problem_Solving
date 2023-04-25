@@ -1,3 +1,4 @@
+# 럭키 스트레이트
 n = input()
 length  = len(n)
 summary = 0
