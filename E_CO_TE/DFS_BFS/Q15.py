@@ -16,9 +16,9 @@ q = deque([x])
 while q:
     now = q.popleft()
     for next_node in graph[now]:
-        if distance[next_node] == -1;
-        distance[next_node] = distance[now] + 1
-        q.append(next_node)
+        if distance[next_node] == -1:
+            distance[next_node] = distance[now] + 1
+            q.append(next_node)
 
 check = False
 for i in range(1, n+1):
